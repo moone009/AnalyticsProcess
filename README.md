@@ -2,8 +2,11 @@
 Basic Steps and examples of how to work through a data science project
 
 
-1. Business Requirements
-* Web Application (Requirements are gathered, domain knowledge extracted)
+1. Business Problem/Question
+	* Requirements Gathered
+	* Domain Knowledge Extracted
+	* Project timeline formalized
+	* Update Meetings scheduled
 2. Data import/access
 	* Rmysql
 	* RSqlServer
