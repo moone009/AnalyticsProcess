@@ -13,7 +13,6 @@
 library(RTextTools)
 library(caret)
 
-
 ##__________________________________________________________________________________________________________________________________________
 # Split into test and train
 ind <- sample(2,nrow(iris),replace=TRUE,prob=c(0.5,0.5))
