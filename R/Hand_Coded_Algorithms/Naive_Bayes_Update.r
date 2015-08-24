@@ -112,10 +112,10 @@ df[[2]] = cut(iris[[2]],3)
 df[[3]] = cut(iris[[3]],3)
 df[[4]] = cut(iris[[4]],3)
 
-Input_Outlook = '(5.5,6.7]'
-Input_Temp = '(2,2.8]'
-Input_Humidity = '(0.994,2.97]'
-Input_Windy = '(0.0976,0.9]'
+Input_Outlook = 'Sepal.Length-(5.5,6.7]'
+Input_Temp = 'Sepal.Width-(2,2.8]'
+Input_Humidity = 'Petal.Length-(0.994,2.97]'
+Input_Windy = 'Petal.Width-(0.0976,0.9]'
 
 
 Target = 'Species'
@@ -132,9 +132,12 @@ for(i in 1:length(Cols)){
   TempDataFrame[3,]= TempDataFrame[3,]/50
   
   if(nrow(Probabilities) <1){
+    colnames(TempDataFrame) =  paste(colnames(df)[Cols[i]],colnames(TempDataFrame),sep='-' )
     Probabilities = TempDataFrame
+    
   }
   else if(nrow(Probabilities) > 1){
+    colnames(TempDataFrame) =  paste(colnames(df)[Cols[i]],colnames(TempDataFrame),sep='-' )
     Probabilities = cbind(Probabilities,TempDataFrame)
   }
   
