@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 
 ##
-df = pandas.read_csv('F:\\Analytics_Process\\Python\\SampleData\\iris.csv')
+df = pd.read_csv('F:\\Analytics_Process\\Python\\SampleData\\iris.csv')
 print(df.head(10))
 
 Matrix = df.values

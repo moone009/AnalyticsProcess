@@ -32,7 +32,7 @@ data$date=rand.date("2013-01-01","2014-02-28",data)
 ##_____________________________________________________________________________________________________________________________
 # Sample Data
 
-Engineer_data <- function(df,col){
+Engineer_data <- function(df,col,holiday){
 	data = df
 	data[paste(col,'_mon',sep='')] = month(data[[col]])
 	data[paste(col,'_year',sep='')] = year(data[[col]])
@@ -43,23 +43,23 @@ Engineer_data <- function(df,col){
 	# Major Holidays
 	# within 7 days of Christmas, Easter, 4th July, Memorial Day, Labor Day, New Years Eve, Thanks Giving
 	
-
-		Holiday <- function(x,month = 12,day = 25){ 
-		Y = as.numeric(x - as.Date(paste(year(gg[[col]]),'-',month,'-',day,sep='')))   
-		if(Y <= 0 & Y >= -7){1}else{0}
+	if(holiday == T){
+			Holiday <- function(x,month = 12,day = 25){ 
+			Y = as.numeric(x - as.Date(paste(year(data[[col]]),'-',month,'-',day,sep='')))   
+			if(Y <= 0 & Y >= -7){1}else{0}
+		}
+	 
+		data[paste(col,'_Christmas',sep='')] =  sapply(data[[col]],Holiday,month=12,day=25)       
+		data[paste(col,'_Independence',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
+		data[paste(col,'_Easter',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
+		data[paste(col,'_Memorial',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
+		data[paste(col,'_NYE',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
+		data[paste(col,'_ThanksGiving',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
 	}
- 
-	data[paste(col,'_Christmas',sep='')] =  sapply(data[[col]],Holiday,month=12,day=25)       
-	data[paste(col,'_Independence',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
-	data[paste(col,'_Easter',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
-	data[paste(col,'_Memorial',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
-	data[paste(col,'_NYE',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
-	data[paste(col,'_ThanksGiving',sep='')] =  sapply(data[[col]],Holiday,month='07',day='04')       
-
 	return(data)
 }
 # Execute function
-data = Engineer_data(data,'date')
+data = Engineer_data(data,'date',F)
 
 
 

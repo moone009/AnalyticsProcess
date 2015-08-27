@@ -140,6 +140,16 @@ qplot(wt, mpg, data=mtcars, geom=c("point", "smooth"),
 # extend from the front and back of the box. The bottom whisker goes from Q1 to the smallest non-outlier in the data set, 
 # and the top whisker goes from Q3 to the largest non-outlier.
 
+
+
+df <- data.frame(f1=factor(rbinom(100, 1, 0.45), label=c("m","w")), 
+                 f2=factor(rbinom(100, 1, 0.45), label=c("young","old")),
+                 boxthis=rnorm(100))
+
+df$f1f2 <- interaction(df$f1, df$f2)
+
+ggplot(aes(y = boxthis, x = f1f2), data = df) + geom_boxplot()
+
 # Boxplot will tell you the followingL Skewness and outliers. 
 mtcars$gear <- factor(mtcars$gear,levels=c(3,4,5),
                       labels=c("3gears","4gears","5gears")) 
