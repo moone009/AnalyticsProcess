@@ -3,7 +3,7 @@
 # Date             : 02-08-2015
 # Author           : Christopher M
 # Dept             : Business Analytics
-# Purpose          : Reordering columns to play keys and descriptions next to each other
+# Purpose          : Reordering columns to pair keys and descriptions next to each other
 # Called by        : Not in production
 ###############################################################################################################################
 # ver    user        date(YYYYMMDD)        change  
