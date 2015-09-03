@@ -41,17 +41,17 @@ LoopAppend <- function (FileDir,Seperator,IsHeader,quote) {
 }
 ##_____________________________________________________________________________________________________________________________
 # setup test data
-dir.create('F:/LoopAppend')
-write.csv(iris,'f:/LoopAppend/iris-1.csv')
-write.csv(iris,'f:/LoopAppend/iris-2.csv')
-write.csv(iris,'f:/LoopAppend/iris-3.csv')
+#dir.create('F:/LoopAppend')
+#write.csv(iris,'f:/LoopAppend/iris-1.csv')
+#write.csv(iris,'f:/LoopAppend/iris-2.csv')
+#write.csv(iris,'f:/LoopAppend/iris-3.csv')
 
 # Check our files
-list.files('F:/LoopAppend')
+#list.files('F:/LoopAppend')
 
 ##_____________________________________________________________________________________________________________________________
 # Execute function
-df = LoopAppend('F:/LoopAppend/',',',T,F)
+#df = LoopAppend('F:/LoopAppend/',',',T,F)
 
 
 
