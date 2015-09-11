@@ -136,7 +136,7 @@ p=ggplot(data = df) +
   xlab("Date") + 
   ggtitle("Usage Overview")
 p + theme(
-  legend.position = c(.977, .95), # c(0,0) bottom left, c(1,1) top-right.
+  legend.position = c(.9785, .95), # c(0,0) bottom left, c(1,1) top-right.
   legend.background = element_rect(fill = "white", colour = NA)
 )
 
