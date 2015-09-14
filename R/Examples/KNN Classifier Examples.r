@@ -90,14 +90,14 @@ p + geom_line()+
 
 ##_____________________________________________________________________________________________________________________________
 # Example smarket
-
+library(ISLR)
 df = Smarket
 cols = c(2:8)
 Target = 'Direction'
 
 Acc <- c()
 K <- c()
-for(x in 1:10){
+for(x in 1:5){
   print(x)
   for(k in 1:5){
     tbl <- KNNClassifier(df,cols,Target,k)
@@ -144,4 +144,13 @@ for(i in 1:sqrt(length(tbl))){
   }
 }
 Model_Results <- list(Acc =accuracy,Recall=recall, Precision= precision)
+cbind(tbl,precision,recall,Acc)
+
+Recall: Percent correctly classified. Ex recall of 90% means I correctly classified 90% of the targets while 10% I missclassified as different target.
+
+Precision: Percent classified as another target. Ex precision of 88% out of the total population classified as X 12% should have been classified as Y.
+
+
+
+
 
