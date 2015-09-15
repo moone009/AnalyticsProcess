@@ -134,17 +134,17 @@ for(i in 1:sqrt(length(tbl))){
   
   accuracy <- accuracy+tbl[,i][i]
   
-  recall <- c(tbl[,i][i]/colSums(tbl)[i],recall)
+  recall <- c(recall,tbl[,i][i]/colSums(tbl)[i])
   
-  precision <- c(tbl[,i][i]/rowSums(tbl)[i],precision)
+  precision <- c(precision,tbl[,i][i]/rowSums(tbl)[i])
   
   if(i == sqrt(length(tbl))){
     accuracy <- round(as.numeric(accuracy/sum(colSums(tbl))),2)
-    
   }
 }
-Model_Results <- list(Acc =accuracy,Recall=recall, Precision= precision)
-cbind(tbl,precision,recall,Acc)
+
+Model_Results <- list(Acc =accuracy,Recall=round(recall,2), Precision= round(precision,2))
+Results <- colnames(cbind(tbl,round(precision,2),round(recall,2),c(accuracy,accuracy))) <- ('a','b','bb','c0','d')
 
 Recall: Percent correctly classified. Ex recall of 90% means I correctly classified 90% of the targets while 10% I missclassified as different target.
 
