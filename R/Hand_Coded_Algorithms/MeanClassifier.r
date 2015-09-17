@@ -37,7 +37,6 @@ MeanClassifier <- function(df,colls,Target){
   return(table(testing[[Target]],testing$Prediction))
 }
 
-MeanClassifier(iris,c(1,2,3,4),'Species')
 
 
 
