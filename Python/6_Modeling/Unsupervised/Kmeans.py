@@ -14,6 +14,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from sklearn.cluster import KMeans
 from sklearn import datasets
 
+
 ##
 df = pd.read_csv('F:\\Analytics_Process\\Python\\SampleData\\iris.csv')
 print(df.head(10))
@@ -22,14 +23,37 @@ Matrix = df.values
 print(Matrix.shape)  
 
 # Excute Kmeans func
-Clusters,Model = Kmeans(df,'Species',6)
+Clusters,Model = Kmeans(df,'Species',3)
 # After Analysis predict and return segments
 MatrixFeatures = Matrix[:,[0,1,2,3]]
-Model.predict(MatrixFeatures)
+Predictions = Model.predict(MatrixFeatures)
+
+# Bind Data
+Pred_df = pd.DataFrame(Predictions)
+
+df.reset_index(level=0, inplace=True)
+Pred_df.reset_index(level=0, inplace=True)
+
+result = pd.merge(df, Pred_df, on='index')
+result = result.rename(columns={0: 'Kmeans'})
+
+# Summarize Data
+Data = result.groupby(['Species','Kmeans']).size().reset_index()
+Data.columns = ['Species','Kmeans','Total']
+Data = pd.DataFrame(Data)
+Data = Data.sort(['Kmeans'], ascending=[False])
+Data = Data.head(10)
+
+
+# Plot Data
+Dataplt = pd.crosstab(result.Species, result.Kmeans)
+Dataplt.plot(kind='barh',alpha=0.5, stacked=True)
+
 
 ##
 def Kmeans(df,Target,Clusters):
     
+    Clusters = Clusters+ 1
     # transform into matrix
     Matrix = df.values
     

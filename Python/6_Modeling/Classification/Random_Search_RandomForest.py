@@ -21,7 +21,7 @@ import pandas as pd
 df = pd.read_csv('F:\\kddcup98-1.csv')
 Matrix = df.values
 print(Matrix.shape)   
-Grid_Search_RF(df,'TARGET_B') 
+Random_Search_RF(df,'TARGET_B') 
 
 # Iris Example
 df = pd.read_csv('F:\\Analytics_Process\\Python\\SampleData\\Iris.csv')
