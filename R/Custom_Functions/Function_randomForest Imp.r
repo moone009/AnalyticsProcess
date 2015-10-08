@@ -67,9 +67,9 @@ rfImp <- function(df,target,returnval){
  }
 }
 
-rfImp(iris,'Species',1)
-rfImp(iris,'Species',2)
-rfImp(iris,'Species',3)
+#rfImp(iris,'Species',1)
+#rfImp(iris,'Species',2)
+#rfImp(iris,'Species',3)
 
 
  
