@@ -1,5 +1,5 @@
 #########################################################################################################
-# Name             : qplot examples
+# Name             : ggmap examples
 # Date             : 08-26-2015
 # Author           : Christopher M
 # Dept             : BEI

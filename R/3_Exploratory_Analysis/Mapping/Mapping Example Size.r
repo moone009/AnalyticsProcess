@@ -82,6 +82,7 @@ ggmap(map) + geom_point(data = df, aes(x = lon, y = lat, size = countTotal, colo
 
 ##_____________________________________________________________________________________________________________________________
 # More points!
+
 x <- getURL('https://raw.githubusercontent.com/moone009/AnalyticsProcess/master/R/SampleData/MapData.csv')
 MapData <- read.csv(text = x)
 
@@ -226,10 +227,6 @@ for(f in 1:length(files)){
   map <- map + geom_point(data = points, aes(x = lon, y = lat,size = median(MapData$CT)))
   
 }
-
-
-
-
 
 
 
