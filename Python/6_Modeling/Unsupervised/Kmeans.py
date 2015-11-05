@@ -103,4 +103,39 @@ def Kmeans(df,Target,Clusters):
     plt.xticks(rotation=55)
     return(data,k_means)
 
+
+
+standardized_X = good_columns.apply(lambda x: (x - np.min(x)) / (np.max(x) - np.min(x)))
+data,km = Kmeans(standardized_X,'season_end',9)
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
