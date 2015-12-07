@@ -1,8 +1,8 @@
 library(plyr)
 library(rpart)
 require(nnet)
+
 sample(iris$Species, size = 30, replace = TRUE)
-df[sample(nrow(iris), 3,replace = TRUE), ]
 df = iris[sample(nrow(iris), 50,replace = TRUE), ]
 
 
