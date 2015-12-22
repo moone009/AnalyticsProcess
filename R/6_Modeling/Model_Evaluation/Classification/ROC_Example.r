@@ -1,9 +1,22 @@
+#########################################################################################################
+# Name             : ROC Curve
+# Date             : 20151222
+# Author           : Christopher M
+# Dept             : BEI
+# Purpose          : Training
+# Called by        : 
+#########################################################################################################
+# ver    user        date(YYYYMMDD)        change  
+# 1.0    w47593      20151222              initial
+#########################################################################################################
+
+
+## Load Libraries
 library(ROCR)
-
-
 library(ggplot2)
 library(caret)
 
+## Load Data
 mydata <- read.csv("http://www.ats.ucla.edu/stat/data/binary.csv")
 mydata$rank = as.factor(mydata$rank)
 
@@ -56,8 +69,8 @@ FRates <- c()
 
 
 for(i in 1:length(probabilites)){
-  TPF <- nrow(subset(Test,preds >= probabilites[i] & admit == 1))/as.numeric( table(Test$admit)[2])
   
+  TPF <- nrow(subset(Test,preds >= probabilites[i] & admit == 1))/as.numeric( table(Test$admit)[2])
   NPF <- nrow(subset(Test,preds >= probabilites[i] & admit == 0))/as.numeric(table(Test$admit)[1])
   
   TRates <- c(TRates,TPF)
@@ -66,6 +79,7 @@ for(i in 1:length(probabilites)){
   plt <-  plt + geom_point(x= NPF ,y = TPF, colour= colors[i],size = 6) 
   
 }
+
 leg <- c()
 TRates<- round(TRates,2)
 FRates <- round(FRates,2)
