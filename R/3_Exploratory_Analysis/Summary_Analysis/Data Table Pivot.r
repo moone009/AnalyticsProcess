@@ -31,7 +31,8 @@ Interim SQL Server Data Mining Project
 * Build business rules models
 
 Tableau Reporting for business clients
-* Identified that many of the clients do not necessarily need modeling they first need their data collected, cleansed, and formatted for them to better understand what question to ask.
+* Identified that many of the clients do not necessarily need modeling (often need inference) they need their data collected, cleansed, 
+  and formatted for them to better understand what question to ask.
 * Self Training
 * Develop a semi automated process for data in Tableau to reach business end users on a timely manner
 * CO, Harvest, Credit Collections, AMI Reporting, WPS

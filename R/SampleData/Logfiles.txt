@@ -1,0 +1,42 @@
+LOG ID 3243242
+
+ADDRESS: 3423 West Milwaukee St, Milwaukee Wi
+
+Error : Vltg A
+
+KWH: 2521
+
+LOG ID 453445
+
+ADDRESS: 1919 West Milwaukee St, Milwaukee Wi
+
+Error : Vltg A
+Error : Memory F
+
+KWH: 1654
+
+LOG ID 92329
+
+ADDRESS: 1512 West Milwaukee St, Milwaukee Wi
+
+Error : Vltg A 
+Error : Vltg C 
+
+KWH: 558
+
+LOG ID 435343
+
+ADDRESS: 2658 West Milwaukee St, Milwaukee Wi
+
+Error : Vltg A 
+Error : Vltg B 
+Error : Vltg A 
+Error : Vltg B 
+Error : Vltg A 
+Error : Vltg B 
+Error : Vltg A 
+Error : Vltg B 
+Error : Vltg A 
+Error : Vltg B 
+
+KWH: 12
