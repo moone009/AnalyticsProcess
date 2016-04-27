@@ -28,8 +28,7 @@ pred_nb = predict(model_NB, testing[,predictors])
 
 ##______________________________________________________________________________________________________
 # Model Results
-confusionMatrix(table(testing[,'Species'],pred_nb))
-
+cf_nb <- confusionMatrix(table(testing[,'Species'],pred_nb))
 
 
 
@@ -49,7 +48,7 @@ pred_c50 = predict(model_C50, testing[,predictors])
 
 ##______________________________________________________________________________________________________
 # Model Results
-confusionMatrix(table(testing[,'Species'],pred_c50))
+cf_c50 <- confusionMatrix(table(testing[,'Species'],pred_c50))
 
 
 
@@ -66,7 +65,7 @@ lda = predict(model_LDA, testing[,predictors])
 
 ##______________________________________________________________________________________________________
 # Model Results
-confusionMatrix(table(testing[,'Species'],lda))
+cf_lda <- confusionMatrix(table(testing[,'Species'],lda))
 
 
 
@@ -84,7 +83,7 @@ LogitBoost = predict(model_LogitBoost, testing[,predictors])
 
 ##______________________________________________________________________________________________________
 # Model Results
-confusionMatrix(table(testing[,'Species'],LogitBoost))
+cf_logi <- confusionMatrix(table(testing[,'Species'],LogitBoost))
 
 
 ##______________________________________________________________________________________________________
@@ -99,18 +98,44 @@ rda = predict(model_rda, testing[,predictors])
 
 ##______________________________________________________________________________________________________
 # Model Results
-confusionMatrix(table(testing[,'Species'],rda))
+cf_rda <- confusionMatrix(table(testing[,'Species'],rda))
 
 
 
+##______________________________________________________________________________________________________
+# Run Model
+system.time(model_rf <- train(training[,predictors], training[,'Species'], 
+                               method='rf',
+                               trControl=myControl))
 
+##______________________________________________________________________________________________________
+# Model Prediction
+randomforest = predict(model_rf, testing[,predictors])
 
+##______________________________________________________________________________________________________
+# Model Results
+cf_randomforest <- confusionMatrix(table(testing[,'Species'],randomforest))
 
+Models <- c('RandomForest','RDA','Logit','LDA','C50','NB')
+cf_results <- as.data.frame(rbind(
+                    cf_randomforest$byClass[,1],
+                    cf_rda$byClass[,1],
+                    cf_logi$byClass[,1],
+                    cf_lda$byClass[,1],
+                    cf_c50$byClass[,1],
+                    cf_nb$byClass[,1]
+                    ))
 
+cf_results <- cbind(Models,cf_results)
 
-results <- data.frame(lda=lda,pred_c50=pred_c50,pred_nb=pred_nb,LogitBoost=LogitBoost,rda = rda)
+results <- data.frame(lda=lda,
+                      pred_c50=pred_c50,
+                      pred_nb=pred_nb,
+                      LogitBoost=LogitBoost,
+                      rda = rda,
+                      randomforest = randomforest)
 results <- cbind(results,testing[,'Species'])
-colnames(results)[6] <- 'actual'
+colnames(results)[7] <- 'actual'
 
 model_vote <- function(x){
   
@@ -119,7 +144,7 @@ model_vote <- function(x){
   return(output)
 }
 
-results$Vote <- apply(results[,c(1:5)],1,model_vote)
+results$Vote <- apply(results[,c(1:6)],1,model_vote)
 confusionMatrix(table(results[,'actual'],results[,'Vote']))
 
 
