@@ -19,7 +19,7 @@ df = pd.read_csv(df)
 ##_Charting     
 
 df.boxplot('DemAge') 
-
-df.boxplot('GiftAvgCard36') 
+df.boxplot('GiftAvgCard36','DemGender') 
+df.boxplot('GiftAvgCard36','DemCluster') 
 
  
