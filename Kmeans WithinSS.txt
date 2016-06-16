@@ -1,0 +1,16 @@
+
+	iris <- rbind(iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris,iris)
+    kmeans<- kmeans(x=df[1:4], centers=5, iter.max=1000)
+
+    kmeans<- kmeans(x=iris[1:4], centers=5, iter.max=1000)
+	
+	df <-cbind(iris,kmeans$cluster)
+	colnames(df)[6] <- 'Cluster'
+	kmeans$tot.withinss
+	kmeans$withinss
+	
+	cl_one <- subset(df,Cluster == 1)[1:4] 
+	centers <- t(as.data.frame(kmeans$centers[1,]))
+	withinss <- cbind(cl_one,centers)
+	withinss[,c(1:4)] - withinss[,c(5:8)]
+	sum(rowSums((withinss[,c(1:4)] - withinss[,c(5:8)])^2))

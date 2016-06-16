@@ -2,10 +2,6 @@ library(plyr)
 library(rpart)
 require(nnet)
 
-sample(iris$Species, size = 30, replace = TRUE)
-df = iris[sample(nrow(iris), 50,replace = TRUE), ]
-
-
 bootModel <- function(df,Class,NumberOfModels){
   print(Class)
   trees <- vector(mode = "list", length =NumberOfModels)
@@ -40,7 +36,7 @@ bootModel <- function(df,Class,NumberOfModels){
 ##_____________________________________________________________________________________________________________________________
 
 df <- iris
-trees <- bootModel(df,'Species',25)
+trees <- bootModel(df,'species',25)
 
 
 data <- data.frame(id = 1:150)
@@ -60,8 +56,8 @@ for(i in 1:nrow(data)){
   data$Class[i] <- gsub("Mean","",class)
 }
 
-predtab <- table(df$Species, data$Class)
-cf_matrix(predtab)
+predtab <- table(toupper(df$species), toupper(data$Class))
+confusionMatrix(predtab)$overall[1]
 
 
          

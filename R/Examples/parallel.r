@@ -41,6 +41,7 @@ parralel_prep <- function(df,cores){
 data$Pidx <- apply(data[12],1,parralel_prep,nrow(data))
 table(data$Pidx)
 
+data <- parralel_prep(data,6)
 
 library(doSNOW)
 library(foreach)
